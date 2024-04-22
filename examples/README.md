@@ -1,0 +1,1 @@
+Sample configuration to provision Transit gateway, attach VPN tunnels and share with Organization.
