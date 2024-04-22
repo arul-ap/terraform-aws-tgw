@@ -12,6 +12,7 @@ variable "env" {
 }
 
 variable "tgw" {
+  description = "Transit gateway details"
   type = object({
     name = string
     description = string
@@ -21,6 +22,7 @@ variable "tgw" {
 }
 
 variable "tgw_vpc_accepter" {
+  description = "Acceptor for Transit gateway attachment request"
   type = map(object({
     tgw_attachment_id = string
     tgw_default_rt_association = optional(bool,true)
@@ -30,6 +32,7 @@ variable "tgw_vpc_accepter" {
 }
 
 variable "vpn" {
+  description = "VPN attachement for Transit gateway"
   type = map(object({
     asn = number
     ip_address = string
@@ -37,6 +40,7 @@ variable "vpn" {
   default = {}
 }
 variable "tgw_share_principal_list" {
+  description = "Share transit gateway across accounts using AWS Resource Access Manager"
   type = list(string) // list of Account ID, Org ARN or OU ARN.
   default = []
 }
