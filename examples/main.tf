@@ -22,13 +22,25 @@ module "tgw" {
   tgw = {
     name = "tgw01"
     description = "test"
-  } /*
-  vpn = {
-    vpn1 = {
+  }
+  
+  tgw_vpc_accepter = { /*
+    vpc_attach-01 ={
+    tgw_attachment_id = "" // VPC attachement ID
+    tgw_default_rt_association = true
+    tgw_deafult_rt_propagation = true
+    } */
+  }
+  
+   
+  vpn = { /*
+    vpn-01 = {
       asn = 65344
       ip_address = "1.1.1.1"
-    }
-  } */
-   // tgw_share_principal_list = ["123456789012"]
+    } */
+  } 
+  
+  // tgw_share_principal_list = ["123456789012"] // Account ID, Org ARN or OU ARN.
+
 
 }
