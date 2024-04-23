@@ -19,6 +19,9 @@ resource "aws_ec2_transit_gateway_vpc_attachment_accepter" "tgw" {
   transit_gateway_attachment_id                   = each.value.tgw_attachment_id
   transit_gateway_default_route_table_association = each.value.tgw_default_rt_association
   transit_gateway_default_route_table_propagation = each.value.tgw_deafult_rt_propagation
+  tags = {
+    Name = "${local.name-prefix}-${each.key}"
+  }
 }
 
 resource "aws_customer_gateway" "tgw" {
