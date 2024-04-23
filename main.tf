@@ -26,6 +26,9 @@ resource "aws_customer_gateway" "tgw" {
   bgp_asn    = each.value.asn
   ip_address = each.value.ip_address
   type       = "ipsec.1"
+  tags = {
+    Name = "${local.name-prefix}-${each.key}-cgw"
+  }
 }
 
 resource "aws_vpn_connection" "tgw" {
@@ -33,6 +36,9 @@ resource "aws_vpn_connection" "tgw" {
   transit_gateway_id  = aws_ec2_transit_gateway.tgw.id
   customer_gateway_id = aws_customer_gateway.tgw[each.key].id
   type                = "ipsec.1"
+  tags = {
+    Name = "${local.name-prefix}-${each.key}-vpn"
+  }
 }
 
 locals {
