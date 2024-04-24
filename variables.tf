@@ -45,3 +45,11 @@ variable "tgw_share_principal_list" {
   type        = list(string) // list of Account ID, Org ARN or OU ARN.
   default     = []
 }
+
+variable "vpn_prefix_reference" {
+  description = "Prefix list reference to VPN attachment"
+  type = map(object({
+    vpn = string
+    prefix_list_id = string
+  }))
+}

@@ -67,3 +67,15 @@ resource "aws_ram_principal_association" "tgw" {
   principal          = var.tgw_share_principal_list[count.index]
 }
 
+data "aws_ec2_transit_gateway_vpn_attachment" "tgw" {
+  for_each = var.vpn
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  vpn_connection_id = aws_vpn_connection.tgw[each.key].id
+}
+
+resource "aws_ec2_transit_gateway_prefix_list_reference" "vpn_pl" {
+  for_each = var.vpn_prefix_reference
+  transit_gateway_route_table_id = aws_ec2_transit_gateway.tgw.association_default_route_table_id
+  transit_gateway_attachment_id = data.aws_ec2_transit_gateway_vpn_attachment.tgw[each.value.vpn].id
+  prefix_list_id = each.value.prefix_list_id
+}
