@@ -36,6 +36,7 @@ variable "vpn" {
   type = map(object({
     asn        = number
     ip_address = string
+    no_bgp = optional(bool,false)
   }))
   default = {}
 }

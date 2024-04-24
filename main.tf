@@ -38,6 +38,7 @@ resource "aws_vpn_connection" "tgw" {
   for_each            = var.vpn
   transit_gateway_id  = aws_ec2_transit_gateway.tgw.id
   customer_gateway_id = aws_customer_gateway.tgw[each.key].id
+  static_routes_only = each.value.no_bgp
   type                = "ipsec.1"
   tags = {
     Name = "${local.name-prefix}-${each.key}-vpn"
