@@ -52,4 +52,5 @@ variable "vpn_prefix_reference" {
     vpn = string
     prefix_list_id = string
   }))
+  default = { }
 }
