@@ -9,6 +9,7 @@ resource "aws_ec2_transit_gateway" "tgw" {
   description                 = var.tgw.description
   amazon_side_asn             = var.tgw.asn
   transit_gateway_cidr_blocks = var.tgw.tgw_cidr
+  auto_accept_shared_attachments = "enable"
   tags = {
     Name = "${local.name-prefix}-${var.tgw.name}"
   }
