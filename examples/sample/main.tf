@@ -42,7 +42,7 @@ module "tgw" {
   // tgw_share_principal_list = ["123456789012"] // Account ID, Org ARN or OU ARN.
   vpn_prefix_reference = {
     pl-01 = {
-      vpn = "vpn-01"
+      vpn            = "vpn-01"
       prefix_list_id = module.pl.pl_id["pl-01"]
     }
   }

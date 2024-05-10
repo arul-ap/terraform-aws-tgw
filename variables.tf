@@ -36,7 +36,7 @@ variable "vpn" {
   type = map(object({
     asn        = number
     ip_address = string
-    no_bgp = optional(bool,false)
+    no_bgp     = optional(bool, false)
   }))
   default = {}
 }
@@ -49,8 +49,8 @@ variable "tgw_share_principal_list" {
 variable "vpn_prefix_reference" {
   description = "Prefix list reference to VPN attachment"
   type = map(object({
-    vpn = string
+    vpn            = string
     prefix_list_id = string
   }))
-  default = { }
+  default = {}
 }
